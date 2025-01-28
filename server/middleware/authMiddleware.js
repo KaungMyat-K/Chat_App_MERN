@@ -7,7 +7,7 @@ const authMiddleWare =  (req,res,next)=>{
         req.body.userId = decodeToken.userId
         next()
     } catch (error) {
-        res.status(400).send({
+        res.status(403).send({
             message: error.message,
             success: false
         }) 

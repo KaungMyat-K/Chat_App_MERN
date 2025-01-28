@@ -19,4 +19,21 @@ router.get('/get-logger-user',authMiddleware,async(req,res)=>{
      
 })
 
+router.get('/get-all-users',authMiddleware,async(req,res)=>{
+    try {
+        const allUsers = await user.find({_id:{$ne: req.body.userId}})
+        res.status(200).send({
+            message: "all users fetched successfully",
+            success: true,
+            data : allUsers
+        })
+    } catch (error) {
+        res.status(400).send({
+            message: error.message,
+            success: false
+        }) 
+    }
+     
+})
+
 module.exports = router

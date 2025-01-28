@@ -16,7 +16,7 @@ router.post('/signup',async (req,res)=>{
         req.body.password = hashedPassword
         const newUser = new user(req.body)
         await newUser.save()
-        res.status(200).send({
+        res.status(201).send({
             message: "user saved successfully",
             success: true
         })
