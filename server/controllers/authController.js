@@ -29,8 +29,8 @@ router.post('/signup',async (req,res)=>{
 })
 
 router.post('/login',async(req,res)=>{
-    try {
-        const existeduser = await user.findOne({email:req.body.email});
+    try {    
+        const existeduser = await user.findOne({email:req.body.email});  
         if(!existeduser){
             return res.status(400).send({
                 message: 'user does not exists',
@@ -38,19 +38,19 @@ router.post('/login',async(req,res)=>{
             })
         }
         const isValid = await bcrypt.compare(req.body.password,existeduser.password)
+        console.log('v',isValid)
         if(!isValid){
             return res.status(400).send({
                 message: 'invalid password',
                 success: false
             })
-        }
+        }      
         const token = jwt.sign({userId:existeduser._id},process.env.SECRET_KEY,{expiresIn:'1d'})
         res.status(200).send({
             message: 'login successfully',
             success: true,
             token,
-        })
-
+        })      
     } catch (error) {
         res.status(400).send({
             message: error.message,
