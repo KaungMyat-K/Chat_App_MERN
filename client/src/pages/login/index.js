@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../../api/auth';
+import toast from 'react-hot-toast';
 
 export default function Login() {
     const navigator = useNavigate()
@@ -15,14 +16,13 @@ export default function Login() {
                     res = await loginUser(user)
                     if(res.success){
                         localStorage.setItem('token',res.token)
-                        
-                        alert(res.message)
-                        navigator.navigate('/')
+                        toast.success(res.message)
+                        navigator('/')
                     }else{
-                        alert(res.message)
+                        toast.error(res.response.data.message)
                     }
                 } catch (error) {
-                    alert(res.message)
+                    toast.error(res.message)
                 }
         }
 

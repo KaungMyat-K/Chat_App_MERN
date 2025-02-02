@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { signupUser } from '../../api/auth';
+import toast from 'react-hot-toast';
 
 export default function SignUp() {
 
@@ -16,12 +17,12 @@ export default function SignUp() {
         try {
             res = await signupUser(user)
             if(res.success){
-                alert(res.message)
+                toast.success(res.message)
             }else{
-                alert(res.message)
+                toast.error(res.response.data.message)
             }
         } catch (error) {
-            alert(res.message)
+            toast.error(res.message)
         }
     }
     
