@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { loginUser } from '../../api/auth';
 
 export default function Login() {
+    const navigator = useNavigate()
     const [user,setUser] = useState({
             email:'',
             password:''
         })
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
             e.preventDefault();
-            console.log(user)
+            let res = null;
+                try {
+                    res = await loginUser(user)
+                    if(res.success){
+                        localStorage.setItem('token',res.token)
+                        
+                        alert(res.message)
+                        navigator.navigate('/')
+                    }else{
+                        alert(res.message)
+                    }
+                } catch (error) {
+                    alert(res.message)
+                }
         }
 
   return (

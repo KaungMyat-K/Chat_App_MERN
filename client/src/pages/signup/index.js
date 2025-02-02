@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { signupUser } from '../../api/auth';
 
 export default function SignUp() {
 
@@ -9,11 +10,21 @@ export default function SignUp() {
         email:'',
         password:''
     })
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        console.log(user)
+        let res = null;
+        try {
+            res = await signupUser(user)
+            if(res.success){
+                alert(res.message)
+            }else{
+                alert(res.message)
+            }
+        } catch (error) {
+            alert(res.message)
+        }
     }
-
+    
   return (
     <div className="container">
         <div className="container-back-img"></div>
