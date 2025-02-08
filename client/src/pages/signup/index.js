@@ -47,7 +47,7 @@ export default function SignUp() {
             </div>
             <div className="card_terms">
                 <span>Already have an account?
-                    <Link to={'/login'}>Login Here</Link >
+                    <Link to={'/login'}>Login</Link >
                 </span>
             </div>
         </div>

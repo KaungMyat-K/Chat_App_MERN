@@ -43,7 +43,7 @@ export default function Login() {
         </div>
         <div className="card_terms"> 
             <span>Don't have an account yet?
-                <Link to={"/signup"}>Signup Here</Link>
+                <Link to={"/signup"}>SignUp</Link>
             </span>
         </div>
         </div>
