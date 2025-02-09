@@ -4,7 +4,8 @@ import { getAllUser, getLoggedUser } from "../api/users";
 import { useDispatch, useSelector } from "react-redux";
 import { hiddenLoader, showLoader } from "../redux/loaderSlice";
 import toast from "react-hot-toast";
-import { setUser, setAllUsers } from "../redux/userSlice";
+import { setUser, setAllUsers, setAllChats } from "../redux/userSlice";
+import { getAllChat } from "../api/chat";
 
 export function ProtectedRoute({ children }) {
   const { user } = useSelector((state) => state.userSlice);
@@ -46,10 +47,23 @@ export function ProtectedRoute({ children }) {
     }
   };
 
+  const getCurrentUsersChat = async () => {
+    let res;
+    try {
+      res = await getAllChat();
+      if (res.success) {
+        dispatch(setAllChats(res.data));
+      }
+    } catch (error) {
+      navigator("/login");
+    }
+  };
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       loggedUser();
       getAllUsers();
+      getCurrentUsersChat();
     } else {
       navigator("/login");
     }
