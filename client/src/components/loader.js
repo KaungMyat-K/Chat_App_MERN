@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Loader() {
   return (
-    <p>loading....</p>
+    <div className="loader-overlay">
+        <div className="loader-spinner"></div>
+    </div>
   )
 }
