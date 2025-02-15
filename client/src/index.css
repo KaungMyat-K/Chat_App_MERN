@@ -259,6 +259,14 @@ i {
   background-color: white;
 }
 
+.selected-user {
+  border-bottom: #ccc 1px solid;
+  padding: 10px 10px;
+  color: #28282b;
+  cursor: pointer;
+  background-color: white;
+}
+
 .filter-user-display {
   display: flex;
   flex-wrap: wrap;
@@ -276,19 +284,29 @@ i {
   font-size: 12px;
 }
 
-.user-default-profile-pic,
-.user-profile-image {
+.user-default-avatar,
+.user-profile-image,
+.user-selected-avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgb(0, 181, 160);
-  color: white;
   font-size: 22px;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
 }
+
+.user-default-avatar {
+  background-color: rgb(0, 181, 160);
+  color: white;
+}
+
+.user-selected-avatar {
+  color: rgb(0, 181, 160);
+  background-color: white;
+}
+
 .user-start-chat {
   padding: 10px 0px;
 }
@@ -298,4 +316,20 @@ i {
   border-radius: 3px;
   background-color: rgb(0, 181, 160);
   color: white;
+}
+
+.app-chat-area {
+  background-color: white;
+  width: 70%;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+.app-chat-area-header {
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  border-bottom: #bbb 1px solid;
+  text-align: right;
+  font-weight: bold;
+  color: rgb(0, 181, 160);
 }
