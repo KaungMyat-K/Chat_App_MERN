@@ -21,10 +21,12 @@ export function ProtectedRoute({ children }) {
         dispatch(setUser(res.data));
       } else {
         toast.error(res.message);
+
         navigator("/login");
       }
     } catch (error) {
       dispatch(hiddenLoader());
+
       navigator("/login");
     }
   };

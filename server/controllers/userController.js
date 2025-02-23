@@ -4,6 +4,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 router.get("/get-logger-user", authMiddleware, async (req, res) => {
   try {
+    console.log(req);
     const existeduser = await user.findOne({ _id: req.body.userId });
     res.status(200).send({
       message: "user fetched successfully",

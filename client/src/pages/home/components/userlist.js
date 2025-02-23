@@ -87,7 +87,7 @@ export default function Userlist({ searchKey }) {
                 </img>
               )}
               {!user.profilePic && (
-                <div className="user-default-profile-pic">
+                <div className="user-default-avatar">
                   {user?.firstName?.[0] + user?.lastName?.[0]}
                 </div>
               )}
