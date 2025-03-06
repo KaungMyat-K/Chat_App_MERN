@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "./components/header";
-import Sidebar from "./components/sidebar";
 import ChatArea from "./components/chat";
 import { useSelector } from "react-redux";
+import Sidebar from "./components/sidebar";
 
 export default function Home() {
   const { selectedChat } = useSelector((state) => state.userSlice);

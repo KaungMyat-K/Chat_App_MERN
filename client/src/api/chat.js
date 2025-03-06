@@ -11,7 +11,7 @@ export const getAllChat = async () => {
 
 export const createNewChat = async (members) => {
   try {
-    const res = await axiosInstance.get("/api/chat/create-new-chat", {
+    const res = await axiosInstance.post("/api/chat/create-new-chat", {
       members,
     });
     return res.data;
