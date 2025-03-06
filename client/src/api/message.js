@@ -8,3 +8,14 @@ export const createNewMessage = async (message) => {
     return error;
   }
 };
+
+export const getAllMessages = async (chatId) => {
+  try {
+    const res = await axiosInstance.get(
+      `/api/message/get-all-messages/${chatId}`
+    );
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+};
